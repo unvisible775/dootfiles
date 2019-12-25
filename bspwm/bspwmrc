@@ -1,0 +1,41 @@
+#! /bin/sh
+ 
+#### AUTOSTART ####
+sxhkd &
+compton &
+wal -i /usr/share/wallpapers/nebula1.jpg &
+synclient TapButton1=1 TapButton2=3 TapButton3=2 & #For laptop touchpad
+xset -b & #For annoying beeping sounds
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+volumeicon &
+nm-applet &
+polybar burr &
+pulseaudio &
+ 
+ 
+#### WORKSPACES AND BORDERS ####
+ 
+#Monitor allocation and their workspaces
+bspc monitor -d Terminal Sublime Firefox Thunar
+ 
+#Border gaps,width, and padding
+bspc config border_width         0
+bspc config window_gap          25
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+ 
+bspc config top_padding          20
+bspc config bottom_padding       20
+bspc config left_padding         20
+bspc config right_padding        20
+ 
+bspc rule -a URxvt desktop='^1' follow=on
+bspc rule -a Subl3 desktop='^2' follow=on
+bspc rule -a Firefox desktop='^3' follow=on
+bspc rule -a Thunar desktop='^4' follow=on
+bspc rule -a Evince desktop='^5'follow=on
+ 
+#Focus on pointer
+bspc config focus_follows_pointer true
+bspc config pointer_follows_focus true
